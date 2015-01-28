@@ -1,6 +1,6 @@
 # uplift-reader 
 
-[![Build Status](https://secure.travis-ci.org/marius/uplift-reader.png?branch=master)](http://travis-ci.org/marius/uplift-reader)
+[![npm](https://img.shields.io/npm/v/uplift-reader.svg)](https://www.npmjs.com/package/uplift-reader)
 
 Reads resource urls in a template. Jinja compatible.
 
