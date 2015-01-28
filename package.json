@@ -1,0 +1,44 @@
+{
+  "name": "uplift-reader",
+  "description": "Reads resource urls in a template. Jinja compatible.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mariusc23/uplift-reader",
+  "author": {
+    "name": "Marius Craciunoiu",
+    "email": "marius@craciunoiu.net",
+    "url": "mariusc23.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mariusc23/uplift-reader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mariusc23/uplift-reader/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/mariusc23/uplift-reader/blob/master/LICENSE"
+    }
+  ],
+  "main": "lib/reader.js",
+  "bin": {
+    "upread": "lib/cli.js"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.5"
+  },
+  "keywords": [],
+  "dependencies": {
+    "commander": "^2.6.0"
+  }
+}
