@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      filter: function(file, key) {
+      filter: function(file, type) {
         return file;
       }
     });
@@ -38,9 +38,9 @@ module.exports = function (grunt) {
         var uglifyFiles = {};
 
         _.forEach(build.$uglify, function(src, dest) {
-          var filteredDest = options.filter.call(file, dest);
+          var filteredDest = options.filter.call(file, dest, 'dest');
           var filteredSrc = _.map(src, function(url) {
-            return options.filter.call(file, url);
+            return options.filter.call(file, url, 'src');
           });
           uglifyFiles[filteredDest] = filteredSrc;
         });
@@ -57,9 +57,9 @@ module.exports = function (grunt) {
         var cssminFiles = {};
 
         _.forEach(build.$cssmin, function(src, dest) {
-          var filteredDest = options.filter.call(file, dest);
+          var filteredDest = options.filter.call(file, dest, 'dest');
           var filteredSrc = _.map(src, function(url) {
-            return options.filter.call(file, url);
+            return options.filter.call(file, url, 'src');
           });
           cssminFiles[filteredDest] = filteredSrc;
         });
