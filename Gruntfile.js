@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         src: ['test/**/*.js']
       },
     },
-    uplift: {
+    upmin: {
       target: {
         files: [{
           cwd: 'test/fixtures',
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   // Test task
-  grunt.registerTask('test', ['uplift', 'jshint', 'nodeunit']);
+  grunt.registerTask('test', ['upmin', 'jshint', 'nodeunit']);
 
   // Default task.
   grunt.registerTask('default', ['test', 'watch']);

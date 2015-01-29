@@ -14,7 +14,7 @@ var chalk  = require('chalk');
 var util   = require('util');
 
 module.exports = function (grunt) {
-  grunt.registerMultiTask('uplift', 'Prepare grunt configs for concatenation.', function () {
+  grunt.registerMultiTask('upmin', 'Prepare grunt configs for concatenation.', function () {
     var that = this;
 
     // Merge task-specific and/or target-specific options with these defaults.
@@ -34,7 +34,7 @@ module.exports = function (grunt) {
 
         var uglifyConfig = {
           uglify: {
-            uplift: {
+            upmin: {
               files: build.$uglify
             }
           }
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
 
         var cssminConfig = {
           cssmin: {
-            uplift: {
+            upmin: {
               files: build.$cssmin
             }
           }
@@ -51,13 +51,13 @@ module.exports = function (grunt) {
         grunt.config.merge(uglifyConfig);
         grunt.config.merge(cssminConfig);
 
-        grunt.verbose.writeln(chalk.cyan(chalk.underline('uglify:uplift')));
+        grunt.verbose.writeln(chalk.cyan(chalk.underline('uglify:upmin')));
         grunt.verbose.writeln(util.inspect(uglifyConfig), {
           showHidden: false,
           depth: null
         });
 
-        grunt.verbose.writeln(chalk.cyan(chalk.underline('cssmin:uplift')));
+        grunt.verbose.writeln(chalk.cyan(chalk.underline('cssmin:upmin')));
         grunt.verbose.writeln(util.inspect(cssminConfig), {
           showHidden: false,
           depth: null
