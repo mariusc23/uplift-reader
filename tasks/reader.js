@@ -19,7 +19,9 @@ module.exports = function (grunt) {
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      separator: grunt.util.linefeed
+      filter: function(file, key) {
+        return file;
+      }
     });
 
     // Iterate over all specified file groups.
@@ -32,18 +34,40 @@ module.exports = function (grunt) {
 
         var build = reader.read(fileContent);
 
+        // Uglify
+        var uglifyFiles = {};
+
+        _.forEach(build.$uglify, function(src, dest) {
+          var filteredDest = options.filter.call(file, dest);
+          var filteredSrc = _.map(src, function(url) {
+            return options.filter.call(file, url);
+          });
+          uglifyFiles[filteredDest] = filteredSrc;
+        });
+
         var uglifyConfig = {
           uglify: {
             upmin: {
-              files: build.$uglify
+              files: uglifyFiles
             }
           }
         };
 
+        // Cssmin
+        var cssminFiles = {};
+
+        _.forEach(build.$cssmin, function(src, dest) {
+          var filteredDest = options.filter.call(file, dest);
+          var filteredSrc = _.map(src, function(url) {
+            return options.filter.call(file, url);
+          });
+          cssminFiles[filteredDest] = filteredSrc;
+        });
+
         var cssminConfig = {
           cssmin: {
             upmin: {
-              files: build.$cssmin
+              files: cssminFiles
             }
           }
         };

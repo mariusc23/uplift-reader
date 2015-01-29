@@ -1,7 +1,7 @@
 {
   "name": "uplift-reader",
   "description": "Reads resource urls in a template. Jinja compatible.",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "homepage": "https://github.com/mariusc23/uplift-reader",
   "author": {
     "name": "Marius Craciunoiu",
