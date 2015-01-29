@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(grunt) {
+  require('load-grunt-tasks')(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -21,6 +22,16 @@ module.exports = function(grunt) {
         src: ['test/**/*.js']
       },
     },
+    uplift: {
+      target: {
+        files: [{
+          cwd: 'test/fixtures',
+          src: ['**/*.html'],
+          expand: true,
+          dest: 'test/tmp'
+        }]
+      }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -37,15 +48,13 @@ module.exports = function(grunt) {
     },
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  // Load this plugin's tasks
+  grunt.loadTasks('tasks');
 
   // Test task
-  grunt.registerTask('test', ['jshint', 'nodeunit']);
+  grunt.registerTask('test', ['uplift', 'jshint', 'nodeunit']);
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'nodeunit', 'watch']);
+  grunt.registerTask('default', ['test', 'watch']);
 
 };

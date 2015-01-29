@@ -1,6 +1,7 @@
 'use strict';
 
 var reader = require('../lib/reader.js');
+var grunt  = require('grunt');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -45,6 +46,20 @@ exports['reader'] = {
     test.equal(result.png[0], '/static/img/favicon.png', 'should have correct url');
     test.equal(result['$build'][0].url, '/static/css/app.min.css', 'should have correct css build path.');
     test.equal(result['$build'][1].url, '/static/js/app.min.js', 'should have correct js build path.');
+    test.done();
+  },
+  gruntStatic: function (test) {
+    test.expect(1);
+    var actual = grunt.file.read('test/tmp/static.html');
+    var expected = grunt.file.read('test/expected/static.html');
+    test.equal(actual, expected, 'should correctly replace static build blocks.');
+    test.done();
+  },
+  gruntJinja: function (test) {
+    test.expect(1);
+    var actual = grunt.file.read('test/tmp/jinja.html');
+    var expected = grunt.file.read('test/expected/jinja.html');
+    test.equal(actual, expected, 'should correctly replace jinja build blocks.');
     test.done();
   },
 };
