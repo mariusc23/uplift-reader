@@ -44,7 +44,7 @@
     "usemin"
   ],
   "dependencies": {
-    "chalk": "^0.5.1",
+    "chalk": "^1.0.0",
     "commander": "^2.6.0",
     "lodash": "^3.0.0"
   }
